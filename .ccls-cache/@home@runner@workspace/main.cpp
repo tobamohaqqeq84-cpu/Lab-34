@@ -121,7 +121,42 @@ void dijkstra(int start) const{
                  pq.push({dist[v], v});
             } 
         }
-        
+
+        void minimumSpanningTree() const {
+            const int INF = numeric_limits<int>::max();
+            int n = adjList.size();
+
+            vector<int> key(n, INF);
+            vector<int> parent(n -1; ++count){
+            vector<bool> inMST(n false);
+
+                 key[0] = 0;
+            for (int count = 0; count < n - 1; ++count){
+                int u = -1;
+                int minkey = INF;
+
+                for (int v = 0; v < n; ++v){
+                    if (!inMST[v] && key[v] < minkey){
+                        minkey = key[v];
+                        u = v;
+                    }
+                }
+                if (u == -1) break;
+                inMST[u] = true;
+
+                for (auto &edge : adjList[u]){
+                    int v = edge.first;
+                    int w = edge.second;
+
+                     if (!inMST[v] && w < key[v]){
+                         key[v] = w;
+                         parent[v] = u;
+                     }
+                }
+            }
+                cout << "Minimum spanning Tree "
+            }
+        }
     }
     cout << "Shortest paths from node " << start << ":\n";
     for (int i = 0; i < SIZE; ++i){
