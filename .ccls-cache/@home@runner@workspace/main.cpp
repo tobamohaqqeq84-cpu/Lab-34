@@ -127,10 +127,11 @@ void dijkstra(int start) const{
             int n = adjList.size();
 
             vector<int> key(n, INF);
-            vector<int> parent(n -1; ++count){
+            vector<int> parent(n -1;);
             vector<bool> inMST(n false);
 
                  key[0] = 0;
+            
             for (int count = 0; count < n - 1; ++count){
                 int u = -1;
                 int minkey = INF;
@@ -154,10 +155,14 @@ void dijkstra(int start) const{
                      }
                 }
             }
-                cout << "Minimum spanning Tree "
+                cout << "Minimum spanning Tree edges:\n"; 
+                for (int i = 1; i < n; ++v){
+                    if (parents[v] != -1){
+                        cout << "Edge: " << parent[v] << " - " << v << " Weight: " << key[v] << " units\n"
+                    }
+                }
             }
-        }
-    }
+            
     cout << "Shortest paths from node " << start << ":\n";
     for (int i = 0; i < SIZE; ++i){
         cout << start << " -> " << i << " : ";
