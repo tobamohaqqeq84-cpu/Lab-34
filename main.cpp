@@ -38,7 +38,7 @@ public:
         cout << "Graph's adjacency list:" << endl;
         for (int i = 0; i < SIZE; i++) {
             cout << i << " --> ";
-            for (auto v : adjList[i]){
+            for (auto  &p : adjList[i]){
                 cout << "(" << p.first << ", " << p.second << ") ";
         }
             cout << endl;
@@ -104,7 +104,7 @@ int main() {
     
 
     // Creates graph
-    Graph graph(edges);
+    Graph g(edges);
     g.printGraph();
     g.dfs(0);
     g.bfs(0);
