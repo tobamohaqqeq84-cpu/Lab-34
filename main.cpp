@@ -32,7 +32,20 @@ public:
         }
     }
            
-void printTransitNetwork(const Graph &graph, const vector<string> &names)
+void printTransitNetwork(const Graph &graph, const vector<string> &names){
+     cout << " City Transit Network Topology:\n";
+    cout << "=================================\n";
+
+    for (auto &edge : graph.adjList[i]){
+        int neighbor = edge.first;
+        int weight = edge.sedcond;
+
+        cout << "→ station " << neighbor << " (" << names[neighbor] << ") "  << "- travel time: "<< weight << "minutes\n";
+    
+}
+    cout << endl; 
+}
+
     // Print the graph's adjacency list
     void printGraph() const {
         cout << "Graph's adjacency list:" << endl;
