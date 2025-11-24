@@ -215,6 +215,9 @@ int main() {
     g.dfs(0);
     g.bfs(0);
     g.dijkstra(0);
+
+    cout << "\n=== Minimum Spanning Tree ===\n";
+    g.minimumSpanningTree();
     
 cout << "\n=== Transit Newtwork == \n";
     printTransitNetwork(g, names);
