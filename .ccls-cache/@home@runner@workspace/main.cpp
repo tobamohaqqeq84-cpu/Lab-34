@@ -36,27 +36,78 @@ public:
     // Print the graph's adjacency list
     void printGraph() const {
         cout << "Graph's adjacency list:" << endl;
-        for (int i = 0; i < adjList.size(); i++) {
+        for (int i = 0; i < SIZE; i++) {
             cout << i << " --> ";
-            for (Pair v : adjList[i])
-                cout << "(" << v.first << ", " << v.second << ") ";
+            for (auto v : adjList[i]){
+                cout << "(" << p.first << ", " << p.second << ") ";
+        }
             cout << endl;
+
+    }
+}
+
+void dfs(int start) const {
+    vector<bool> visited(SIZE, false);
+    stack<int> st;
+
+    visited[start] = true;
+    st.push(start);
+
+    cout << "DFS Starting from vertex " << start << ":\n";
+
+    while (!st.empty()){
+        int v = st.top();
+        st.pop();
+        cout << v << " ";
+
+        for (auto &edge : adjList[v]){
+            int u = edge.first;
+            if (!visited[u]){
+                visited[u] = true;
+                st.push(u);
+            }
         }
     }
-};
+    cout << endl;
+}
 
+void bfs(int start) const{
+    vector<bool> visited(SIZE, false);
+    queue<int> q;
+
+    visited[start] = true;
+    q.push(start);
+    cout << "BFS Starting from vertex " << start << ":\n";
+
+    while (!q.empty()) {
+        int v = q.front();
+        q.pop();
+        cout << v << " ";
+
+        for (auto &edge : adjList[v]){
+            int u = edge.first;
+            if (!visited[u]){
+                visited[u] = true;
+                q.push(u);
+            }
+        }
+    }
+    cout << endl;
+}
+};
 int main() {
     // Creates a vector of graph edges/weights
     vector<Edge> edges = {
         // (x, y, w) —> edge from x to y having weight w
         {0,1,12},{0,2,8},{0,3,21},{2,3,6},{2,6,2},{5,6,6},{4,5,9},{2,4,4},{2,5,5}
     };
+    
 
     // Creates graph
     Graph graph(edges);
-
-    // Prints adjacency list representation of graph
-    graph.printGraph();
+    g.printGraph();
+    g.dfs(0);
+    g.bfs(0);
 
     return 0;
 }
