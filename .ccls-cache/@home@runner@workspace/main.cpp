@@ -32,7 +32,7 @@ public:
         }
     }
            
-
+void printTransitNetwork(const Graph &graph, const vector<string> &names)
     // Print the graph's adjacency list
     void printGraph() const {
         cout << "Graph's adjacency list:" << endl;
