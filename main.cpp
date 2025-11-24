@@ -211,6 +211,20 @@ int main() {
     "East Station", "West Station",
     "Museum District", "Airport Terminal", "Tech Park", "University Campus", "Stadium"
 }; 
+    do {
+        cout << "\nCity Transit Network Menu:\n";
+        cout << "[1] Display water distribution network";
+        cout << "[2] Check contaminant spread (BFS)";
+        cout << "[3] Plan inspection route  (DFS)";
+        cout << "[4] Calculate shortest paths";
+        cout << "[5] Find Minimum Spanning Tree";
+        cout << "[0] Exit";
+        cout << "Enter your choice: ";
+
+        cout << endl;
+
+        switch (choice)
+    }
     g.printGraph();
     g.dfs(0);
     g.bfs(0);
