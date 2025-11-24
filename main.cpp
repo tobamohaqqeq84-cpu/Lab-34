@@ -8,6 +8,7 @@
 #include <stack>
 #include <limits>
 #include <functional>
+#include <string>
 
 using namespace std;
 
@@ -115,8 +116,9 @@ void dijkstra(int start) const{
             int v = edge.first;
             int w = edge.second;
 
-            if (dist[u] != INF && dist[u] + w < dist[v]){
+            if (dist[u] + w < dist[v]){ 
                  dist[v] = dist[u] + w;
+                 pq.push({dist[v], v});
             } 
         }
         
@@ -134,11 +136,14 @@ void dijkstra(int start) const{
 void printTransitNetwork(const Graph &graph, const vector<string> &names){
      cout << " City Transit Network Topology:\n";
     cout << "=================================\n";
+    
 for (int i=0; i < (int)graph.adjList.size(); ++i){
+    cout << "Station " << i << " (" << names[i] << ") connects to:\n";
+
     for (auto &edge : graph.adjList[i]){
         int neighbor = edge.first;
         int weight = edge.second;
-
+        
         cout << "→ station " << neighbor << " (" << names[neighbor] << ") "  << "- travel time: "<< weight << "minutes\n";
 
 }
@@ -164,6 +169,7 @@ int main() {
     g.printGraph();
     g.dfs(0);
     g.bfs(0);
+    g.dijkstra(0);
     
 cout << "\n=== Transit Newtwork == \n";
     printTransitNetwork(g, names);
