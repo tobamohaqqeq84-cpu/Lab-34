@@ -6,6 +6,8 @@
 #include <vector>
 #include <queue>
 #include <stack>
+#include <limits>
+#include <functional>
 
 using namespace std;
 
@@ -93,6 +95,38 @@ void bfs(int start) const{
         }
     }
     cout << endl;
+}
+void dijkstra(int start) const{
+    const int INF = numeric_limits<int>::max();
+    vector<int> dist(SIZE, INF);
+    dist[start] = 0;
+
+    priority_queue<Pair, vector<Pair>, greater<Pair>> pq;
+    pq.push({0, start});
+
+    while (!pq.empty()){
+        int d = pq.top().first; 
+        int u = pq.top().second;
+        pq.pop();
+
+        if (d > dist[u]) continue; 
+
+        for (auto &edge : adjList[u]){
+            int v = edge.first;
+            int w = edge.second;
+
+            if (dist[u] != INF && dist[u] + w < dist[v]){
+                 dist[v] = dist[u] + w;
+            } 
+        }
+        
+    }
+    cout << "Shortest paths from node " << start << ":\n";
+    for (int i = 0; i < SIZE; ++i){
+        cout << start << " -> " << i << " : ";
+        if (dist[i] == INF) cout << "unreachable"
+
+    }
 }
 };
 
