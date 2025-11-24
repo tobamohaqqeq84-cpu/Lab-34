@@ -80,6 +80,7 @@ void bfs(int start) const{
 
     visited[start] = true;
     q.push(start);
+    
     cout << "BFS Starting from vertex " << start << ":\n";
 
     while (!q.empty()) {
@@ -95,9 +96,10 @@ void bfs(int start) const{
             }
         }
     }
+    
     cout << endl;
 }
-void dijkstra(int start) const{
+void dijkstra(int start) const {
     const int INF = numeric_limits<int>::max();
     vector<int> dist(SIZE, INF);
     dist[start] = 0;
@@ -121,14 +123,23 @@ void dijkstra(int start) const{
                  pq.push({dist[v], v});
             } 
         }
+    }
+    cout << "Shortest paths from node " << start << ":\n";
+        for (int i = 0; i < SIZE; ++i){
+            cout << start << " -> " << i << " : ";
+            if (dist[i] == INF) cout << "unreachable";
+            else cout << dist[i] << "\n";
+
+        }
+     }
 
         void minimumSpanningTree() const {
             const int INF = numeric_limits<int>::max();
             int n = adjList.size();
 
             vector<int> key(n, INF);
-            vector<int> parent(n -1;);
-            vector<bool> inMST(n false);
+            vector<int> parent(n, -1);
+            vector<bool> inMST(n, false);
 
                  key[0] = 0;
             
@@ -142,6 +153,7 @@ void dijkstra(int start) const{
                         u = v;
                     }
                 }
+                
                 if (u == -1) break;
                 inMST[u] = true;
 
@@ -156,21 +168,14 @@ void dijkstra(int start) const{
                 }
             }
                 cout << "Minimum spanning Tree edges:\n"; 
-                for (int i = 1; i < n; ++v){
-                    if (parents[v] != -1){
-                        cout << "Edge: " << parent[v] << " - " << v << " Weight: " << key[v] << " units\n"
+                for (int v = 1; v < n; ++v){
+                    if (parent[v] != -1){
+                        cout << "Edge: " << parent[v] << " - " << v << " Weight: " << key[v] << " units\n";
                     }
                 }
             }
             
-    cout << "Shortest paths from node " << start << ":\n";
-    for (int i = 0; i < SIZE; ++i){
-        cout << start << " -> " << i << " : ";
-        if (dist[i] == INF) cout << "unreachable";
-        else cout << dist[i] << "\n";
-
-    }
- }
+    
 };
 
 void printTransitNetwork(const Graph &graph, const vector<string> &names){
