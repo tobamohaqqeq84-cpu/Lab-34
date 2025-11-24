@@ -99,15 +99,16 @@ void bfs(int start) const{
 void printTransitNetwork(const Graph &graph, const vector<string> &names){
      cout << " City Transit Network Topology:\n";
     cout << "=================================\n";
-
+for (int i=0; i < (int)graph.adjList.size(); ++i){
     for (auto &edge : graph.adjList[i]){
         int neighbor = edge.first;
-        int weight = edge.sedcond;
+        int weight = edge.second;
 
         cout << "→ station " << neighbor << " (" << names[neighbor] << ") "  << "- travel time: "<< weight << "minutes\n";
 
 }
     cout << endl; 
+}
 }
 
 int main() {
