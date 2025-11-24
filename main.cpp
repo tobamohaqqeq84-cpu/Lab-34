@@ -15,12 +15,13 @@ struct Edge {
     int src, dest, weight;
 };
 
-typedef pair<int, int> Pair;  // Creates alias 'Pair' for the pair<int,int> data type
+typedef pair<int, int> Pair;  
+
 
 class Graph {
 public:
-    // a vector of vectors of Pairs to represent an adjacency list
-    vector<vector<Pair>> adjList;
+
+vector<vector<Pair>> adjList;
 
     // Graph Constructor
     Graph(const vector<Edge> &edges) {
@@ -31,20 +32,6 @@ public:
             adjList[e.dest].push_back({e.src, e.weight});
         }
     }
-           
-void printTransitNetwork(const Graph &graph, const vector<string> &names){
-     cout << " City Transit Network Topology:\n";
-    cout << "=================================\n";
-
-    for (auto &edge : graph.adjList[i]){
-        int neighbor = edge.first;
-        int weight = edge.sedcond;
-
-        cout << "→ station " << neighbor << " (" << names[neighbor] << ") "  << "- travel time: "<< weight << "minutes\n";
-    
-}
-    cout << endl; 
-}
 
     // Print the graph's adjacency list
     void printGraph() const {
@@ -108,6 +95,21 @@ void bfs(int start) const{
     cout << endl;
 }
 };
+
+void printTransitNetwork(const Graph &graph, const vector<string> &names){
+     cout << " City Transit Network Topology:\n";
+    cout << "=================================\n";
+
+    for (auto &edge : graph.adjList[i]){
+        int neighbor = edge.first;
+        int weight = edge.sedcond;
+
+        cout << "→ station " << neighbor << " (" << names[neighbor] << ") "  << "- travel time: "<< weight << "minutes\n";
+
+}
+    cout << endl; 
+}
+
 int main() {
     vector<Edge> edges = {
     {0,1,8},{0,2,21},{1,2,6},{1,3,5},{1,4,4},{2,7,11},{2,8,8},{3,4,9},{5,6,10},{5,7,15},{5,8,5},{6,7,3},{6,8,7}
@@ -119,12 +121,15 @@ int main() {
 
     vector<string> names =
     {
-    "Central Station", "North Station"
+    "Central Station", "North Station",
+    "East Station", "West Station",
+    "Museum District", "Airport Terminal", "Tech Park", "University Campus", "Stadium"
 }; 
     g.printGraph();
     g.dfs(0);
     g.bfs(0);
-
+    
+cout << "\n=== Transit Newtwork == \n";
     printTransitNetwork(g, names);
     return 0;
 }
