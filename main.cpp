@@ -124,7 +124,8 @@ void dijkstra(int start) const{
     cout << "Shortest paths from node " << start << ":\n";
     for (int i = 0; i < SIZE; ++i){
         cout << start << " -> " << i << " : ";
-        if (dist[i] == INF) cout << "unreachable"
+        if (dist[i] == INF) cout << "unreachable";
+        else cout << dist[i] << "\n";
 
     }
 }
