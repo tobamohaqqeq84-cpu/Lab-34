@@ -130,7 +130,7 @@ void dijkstra(int start) const{
         else cout << dist[i] << "\n";
 
     }
-}
+ }
 };
 
 void printTransitNetwork(const Graph &graph, const vector<string> &names){
@@ -144,11 +144,11 @@ for (int i=0; i < (int)graph.adjList.size(); ++i){
         int neighbor = edge.first;
         int weight = edge.second;
         
-        cout << "→ station " << neighbor << " (" << names[neighbor] << ") "  << "- travel time: "<< weight << "minutes\n";
+        cout << "→ station " << neighbor << " (" << names[neighbor] << ") "  << "- travel time: " << weight << "minutes\n";
 
 }
     cout << endl; 
-}
+ }
 }
 
 int main() {
@@ -173,5 +173,6 @@ int main() {
     
 cout << "\n=== Transit Newtwork == \n";
     printTransitNetwork(g, names);
+    
     return 0;
 }
