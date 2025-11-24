@@ -211,6 +211,8 @@ int main() {
     "East Station", "West Station",
     "Museum District", "Airport Terminal", "Tech Park", "University Campus", "Stadium"
 }; 
+    int choice;
+   
     do {
         cout << "\nCity Transit Network Menu:\n";
         cout << "[1] Display water distribution network";
@@ -221,48 +223,55 @@ int main() {
         cout << "[0] Exit";
         cout << "Enter your choice: ";
 
+        cin >> choice;
         cout << endl;
 
-        switch (choice){
+        switch (choice) {
+            
             case 1:
                 g.printGraph();
                 break;
+            
             case 2:
                 printTransitNetwork(g, names);
                 break;
-            case 3:
+            
+            case 3:{
                 int start;
             cout << "Enter starting station (0-" << SIZE -1 << "): ";
              cin >> start;
-             if (start >= 0 && start < SIZE){
+             if (start >= 0 && start < SIZE)
                  g.bfs(start);
-             } else {
+              else 
                  cout << "Invalid station\n";
                   break;
              }
-             case 4:
+            
+             case 4:{
             int start;
             cout << "Enter starting station (0-" << SIZE -1 << "): ";
              cin >> start;
-             if (start >= 0 && start < SIZE){
+             if (start >= 0 && start < SIZE)
                  g.dfs(start);
-             } else {
+              else 
                  cout << "Invalid station\n";
                   break;
              }
+            
             case 5:{
                 int start;
                 cout << "Enter starting station for shortest path(0-" << SIZE -1 << "): ";
                 cin >> start;
-                if (start >= 0 && start < SIZE){
+                if (start >= 0 && start < SIZE)
                     g.dijkstra(start);
-                } else {
+                else 
                     cout << "Invalid station\n";
                 break;
             }
                 case 6:
                 g.minimumSpanningTree();
                 break;
+                
                 case 0:
                 cout << "Exiting program....\n";
                     break; 
@@ -270,20 +279,8 @@ int main() {
                     default:
                     cout << "Invalid choice. Please try again.\n";
             }
-        } while (choice != 0);
+        } while ( choice != 0);
+    
                 return 0;
-        }
-    }
-    g.printGraph();
-    g.dfs(0);
-    g.bfs(0);
-    g.dijkstra(0);
-
-    cout << "\n=== Minimum Spanning Tree ===\n";
-    g.minimumSpanningTree();
-    
-cout << "\n=== Transit Newtwork == \n";
-    printTransitNetwork(g, names);
-    
-    return 0;
-}
+         }
+  
