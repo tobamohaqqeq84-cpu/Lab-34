@@ -116,9 +116,15 @@ int main() {
 
     // Creates graph
     Graph g(edges);
+
+    vector<string> names =
+    {
+    "Central Station", "North Station"
+}; 
     g.printGraph();
     g.dfs(0);
     g.bfs(0);
 
+    printTransitNetwork(g, names);
     return 0;
 }
