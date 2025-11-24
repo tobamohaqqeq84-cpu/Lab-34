@@ -4,6 +4,9 @@
 
 #include <iostream>
 #include <vector>
+#include <queue>
+#include <stack>
+
 using namespace std;
 
 const int SIZE = 7;
@@ -20,25 +23,18 @@ public:
     vector<vector<Pair>> adjList;
 
     // Graph Constructor
-    Graph(vector<Edge> const &edges) {
-        // resize the vector to hold SIZE elements of type vector<Edge>
+    Graph(const vector<Edge> &edges) {
         adjList.resize(SIZE);
 
-        // add edges to the directed graph
-        for (auto &edge: edges) {
-            int src = edge.src;
-            int dest = edge.dest;
-            int weight = edge.weight;
-
-            // insert at the end
-            adjList[src].push_back(make_pair(dest, weight));
-            // for an undirected graph, add an edge from dest to src also
-            adjList[dest].push_back(make_pair(src, weight));
+        for (auto &e : edges) {
+            adjList[e.src].push_back({e.dest, e.weight});
+            adjList[e.dest].push_back({e.src, e.weight});
         }
     }
+           
 
     // Print the graph's adjacency list
-    void printGraph() {
+    void printGraph() const {
         cout << "Graph's adjacency list:" << endl;
         for (int i = 0; i < adjList.size(); i++) {
             cout << i << " --> ";
